@@ -1,0 +1,24 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.secure=0
+ro.adb.secure=0
+ro.debuggable=1
+persist.sys.root_access=1
+persist.service.adb.enable=1
+security.perf_harden=1
+ro.allow.mock.location=0
+ro.zygote=zygote32
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+ro.dalvik.vm.native.bridge=0
+debug.atrace.tags.enableflags=0
+persist.sys.usb.config=mtp,adb
+#
+# BOOTIMAGE_BUILD_PROPERTIES
+#
+ro.bootimage.build.date=Sen Sep 4 15:09:08 WIB 2017
+ro.bootimage.build.date.utc=1504512548
+ro.bootimage.build.fingerprint=samsung/lineage_kanas/kanas:6.0.1/MOB31K/775a289488:userdebug/test-keys
