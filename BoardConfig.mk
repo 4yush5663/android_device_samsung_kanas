@@ -90,6 +90,9 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/batt_lp_charging
 BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/samsung/scx30-common/rootdir/fstab.sc8830
+
 # Codecs
 BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 
@@ -132,7 +135,7 @@ MALLOC_SVELTE := true
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
 # SELinux policy
-BOARD_SEPOLICY_DIRS += device/samsung/scx35-common/sepolicya
+BOARD_SEPOLICY_DIRS += device/samsung/kanas/sepolicy
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := kanas,kanas3g,kanas3gxx,kanas3gub,kanas3gnfcxx,kanas3gnfc,SM-G355H,SM-G355HN,SM-G355M
