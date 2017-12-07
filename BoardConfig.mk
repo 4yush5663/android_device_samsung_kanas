@@ -18,6 +18,16 @@
 # Inherit from the proprietary version
 -include vendor/samsung/kanas/BoardConfigVendor.mk
 
+# Platform
+TARGET_ARCH := arm
+TARGET_BOARD_PLATFORM := sc8830
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a7
+TARGET_NO_BOOTLOADER := true
+BOARD_VENDOR := samsung
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sc7735s
 
@@ -36,6 +46,8 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kanas/bluetooth
+USE_BLUETOOTH_BCM4330 := true
+BOARD_CUSTOM_BT_CONFIG := device/samsung/scx35-common/bluetooth/libbt_vndcfg.txt
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -61,6 +73,66 @@ TARGET_SCREEN_WIDTH := 480
 # Kernel
 TARGET_KERNEL_CONFIG := sandroid_kanas_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/kanas
+
+# Kernel
+BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET := 0x01000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin
+
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_NO_CHARGER_LED := true
+BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
+CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/batt_lp_charging
+BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
+
+# Codecs
+BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
+
+# Graphics
+BOARD_EGL_NEEDS_HANDLE_VALUE := true
+
+# HWComposer
+USE_SPRD_HWCOMPOSER := true
+
+# Lights
+TARGET_HAS_BACKLIT_KEYS := false
+
+# Board specific features
+TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
+# healthd
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.sc8830
+
+# Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_sec
+
+
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
+
+# Bionic
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
+# PowerHAL
+TARGET_POWERHAL_VARIANT := scx35
+
+# Build system
+WITHOUT_CHECK_API := true
+
+# Malloc implementation
+MALLOC_SVELTE := true
+
+# RIL
+BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
+
+# SELinux policy
+BOARD_SEPOLICY_DIRS += device/samsung/scx35-common/sepolicya
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := kanas,kanas3g,kanas3gxx,kanas3gub,kanas3gnfcxx,kanas3gnfc,SM-G355H,SM-G355HN,SM-G355M
