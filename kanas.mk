@@ -20,6 +20,10 @@ LOCAL_PATH := device/samsung/kanas
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+
+# The gps config appropriate for this device
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
+
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/kanas/kanas-vendor.mk)
 
