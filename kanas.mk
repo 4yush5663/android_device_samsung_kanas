@@ -54,6 +54,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	rild.rc
 
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+	bt_vendor.conf
+
+# GPS
+PRODUCT_PACKAGES += \
+	gps.xml \
+
+# WiFi
+PRODUCT_PACKAGES += \
+	wpa_supplicant.conf \
+	nvram_net.txt \
+	nvram_mfg.txt
+
+# Rootdir
+PRODUCT_PACKAGES += \
+	fstab.sc8830
+
+# Media
+PRODUCT_PACKAGES += \
+	media_codecs.xml
 # WiFi
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
