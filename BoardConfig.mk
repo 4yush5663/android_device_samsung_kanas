@@ -90,9 +90,6 @@ BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charg
 CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/batt_lp_charging
 BACKLIGHT_PATH := /sys/class/backlight/panel/brightness
 
-# Recovery
-TARGET_RECOVERY_FSTAB := device/samsung/scx30-common/rootdir/fstab.sc8830
-
 # Codecs
 BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 
@@ -140,5 +137,36 @@ BOARD_SEPOLICY_DIRS += device/samsung/kanas/sepolicy
 # Assert
 TARGET_OTA_ASSERT_DEVICE := kanas,kanas3g,kanas3gxx,kanas3gub,kanas3gnfcxx,kanas3gnfc,SM-G355H,SM-G355HN,SM-G355M
 
+# Recovery
+BOARD_HAS_DOWNLOAD_MODE := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_FSTAB := device/samsung/kanas/rootdir/fstab.sc8830
+TARGET_RECOVERY_TWRP := false
 
+ifeq ($(TARGET_RECOVERY_TWRP),true)
+RECOVERY_VARIANT := twrp
+TARGET_USES_LOGD := true
+WITH_CM_CHARGER := false
+# TWRP
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
+TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_CUSTOM_CPU_TEMP_PATH := "/sys/devices/platform/sec-thermistor/temperature"
+TW_NO_REBOOT_BOOTLOADER := true
+TW_NO_USB_STORAGE := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_USE_TOOLBOX := true
+TWRP_INCLUDE_LOGCAT := true
+TW_EXCLUDE_SUPERSU := true
+TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+TW_THEME := portrait_mdpi
+TWHAVE_SELINUX := true
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_10x18.h\"
+# UMS
+BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
+endif
+
+# System properties
+TARGET_SYSTEM_PROP += device/samsung/kanas/system.prop
 
