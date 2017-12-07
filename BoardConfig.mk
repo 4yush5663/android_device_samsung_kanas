@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Inherit from SPRD common configs
--include device/samsung/scx35-common/BoardConfigCommon.mk
+-include device/samsung/sprd-common/BoardConfigCommon.mk
 
 # Inherit from the proprietary version
 -include vendor/samsung/kanas/BoardConfigVendor.mk
