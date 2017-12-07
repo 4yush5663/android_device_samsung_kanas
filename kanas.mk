@@ -78,10 +78,12 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
+        macloader
 	wpa_supplicant.conf \
 	nvram_net.txt \
 	nvram_mfg.txt
 
+	
 # Rootdir
 PRODUCT_PACKAGES += \
 	fstab.sc8830
@@ -98,6 +100,19 @@ MEDIA_XML_CONFIGS := \
 
 PRODUCT_COPY_FILES += \
 	$(foreach f,$(MEDIA_XML_CONFIGS),$(f):system/etc/$(notdir $(f)))
+
+# Permissions
+PERMISSIONS_XML_FILES := \
+	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml \
+	frameworks/native/data/etc/android.hardware.camera.front.xml \
+	frameworks/native/data/etc/android.hardware.camera.xml \
+	frameworks/native/data/etc/android.hardware.sensor.proximity.xml \
+	frameworks/native/data/etc/android.hardware.sensor.light.xml \
+	frameworks/native/data/etc/android.software.midi.xml \
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml
+
+PRODUCT_COPY_FILES += \
+	$(foreach f,$(PERMISSIONS_XML_FILES),$(f):system/etc/permissions/$(notdir $(f)))
 	
 # HWC
 PRODUCT_PACKAGES += \
@@ -182,9 +197,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.google.locationfeatures=1 \
 	ro.com.google.networklocation=1
 
-# Dalvik heap config
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
 
 # For userdebug builds
 ADDITIONAL_DEFAULT_PROPERTIES += \
@@ -194,12 +206,16 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
 	persist.sys.root_access=1 \
 	persist.service.adb.enable=1
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # ART device props
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.dex2oat-flags=--no-watch-dog
-	
+
+# Dalvik heap config
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 # WiFi
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
