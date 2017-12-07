@@ -43,6 +43,17 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/media/mediaserver.rc:system/etc/init/mediaserver.rc
 
+# Audio
+PRODUCT_PACKAGES += \
+	audio_hw.xml \
+	audio_para \
+	audio_effects_vendor.conf \
+	audio_policy.conf \
+	codec_pga.xml \
+	tiny_hw.xml \
+	audio.primary.sc8830 \
+	libaudio-resampler
+	
 # Rootdir files
 PRODUCT_PACKAGES += \
 	init.sc8830.rc \
@@ -57,7 +68,9 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-	bt_vendor.conf
+	bt_vendor.conf \
+	libbluetooth_jni \
+	bluetooth.default
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -76,6 +89,39 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_PACKAGES += \
 	media_codecs.xml
+
+# HWC
+PRODUCT_PACKAGES += \
+	libHWCUtils \
+	gralloc.sc8830 \
+	hwcomposer.sc8830 \
+	sprd_gsp.sc8830 \
+	libmemoryheapion \
+	libion_sprd
+	
+# Codecs
+PRODUCT_PACKAGES += \
+        libstagefrighthw \
+	libcolorformat_switcher \
+	libstagefright_sprd_mpeg4dec \
+	libstagefright_sprd_mpeg4enc \
+	libstagefright_sprd_h264dec \
+	libstagefright_sprd_h264enc \
+	libstagefright_sprd_vpxdec \
+	libstagefright_sprd_aacdec \
+	libstagefright_sprd_mp3dec
+	
+# Common libs
+PRODUCT_PACKAGES += \
+	libstlport \
+	librilutils \
+	libril_shim \
+	libgps_shim
+	
+# ART device props
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.dex2oat-flags=--no-watch-dog
+	
 # WiFi
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
