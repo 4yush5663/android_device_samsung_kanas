@@ -24,11 +24,15 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+# Inherit from AOSP product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 # Inherit from vendor tree
 $(call inherit-product-if-exists, vendor/samsung/kanas/kanas-vendor.mk)
 
-# Inherit from scx35-common device configuration
-$(call inherit-product, device/samsung/scx35-common/common.mk)
+# Inherit from sprd-common device configuration
+$(call inherit-product, device/samsung/sprd-common/common.mk)
+
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 800
