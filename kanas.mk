@@ -90,6 +90,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	media_codecs.xml
 
+# Media config
+MEDIA_XML_CONFIGS := \
+	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml \
+	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml
+
+PRODUCT_COPY_FILES += \
+	$(foreach f,$(MEDIA_XML_CONFIGS),$(f):system/etc/$(notdir $(f)))
+	
 # HWC
 PRODUCT_PACKAGES += \
 	libHWCUtils \
@@ -117,7 +126,76 @@ PRODUCT_PACKAGES += \
 	librilutils \
 	libril_shim \
 	libgps_shim
+
+# System init.rc files
+PRODUCT_PACKAGES += \
+	at_distributor.rc \
+	chown_service.rc \
+	data.rc \
+	dns.rc \
+	engpc.rc \
+	gpsd.rc \
+	hostapd.rc \
+	kill_phone.rc \
+	macloader.rc \
+	mediacodec.rc \
+	modem_control.rc \
+	modemd.rc \
+	nvitemd.rc \
+	p2p_supplicant.rc \
+	phoneserver.rc \
+	refnotify.rc \
+	set_mac.rc \
+	smd_symlink.rc \
+	swap.rc \
+	wpa_supplicant.rc \
+
+# Rootdir files
+PRODUCT_PACKAGES += \
+	init.board.rc \
+	init.wifi.rc
 	
+# Lights
+PRODUCT_PACKAGES += \
+	lights.sc8830
+
+# PowerHAL
+PRODUCT_PACKAGES += \
+	power.sc8830
+
+# Camera config
+PRODUCT_PROPERTY_OVERRIDES += \
+	camera.disable_zsl_mode=1
+
+# Languages
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.product.locale.language=en \
+	ro.product.locale.region=GB
+
+# Disable mobile data on first boot
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.com.android.mobiledata=false
+
+# enable Google-specific location features,
+# like NetworkLocationProvider and LocationCollector
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.com.google.locationfeatures=1 \
+	ro.com.google.networklocation=1
+
+# Dalvik heap config
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+
+# For userdebug builds
+ADDITIONAL_DEFAULT_PROPERTIES += \
+	ro.secure=0 \
+	ro.adb.secure=0 \
+	ro.debuggable=1 \
+	persist.sys.root_access=1 \
+	persist.service.adb.enable=1
+
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
 # ART device props
 PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.dex2oat-flags=--no-watch-dog
