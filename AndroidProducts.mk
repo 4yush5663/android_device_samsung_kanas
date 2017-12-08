@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_kanas.mk
+    $(LOCAL_DIR)/kanas.mk
