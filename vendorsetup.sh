@@ -1,4 +1,4 @@
-add_lunch_combo cm_kanas-eng
-add_lunch_combo cm_kanas-userdebug
+add_lunch_combo lineage_kanas-eng
+add_lunch_combo lineage_kanas-userdebug
 
 
