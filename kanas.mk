@@ -89,7 +89,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
-        macloader
+        macloader \
 	wpa_supplicant.conf \
 	nvram_net.txt \
 	nvram_mfg.txt
