@@ -9,7 +9,7 @@ Basic   | Spec Sheet
 CPU     | Quad-core 1,3GHz Cortex-A7
 CHIPSET | Spreadtrum SC7735S sc8830
 GPU     | Mali-400MP
-Memory  | 720 GB
+Memory  | 720 MB
 Shipped Android Version | Android 4.4.2 with TouchWiz Essence
 Storage | 4 GB
 MicroSD | Up to 64 GB
