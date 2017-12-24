@@ -8,7 +8,7 @@ PRODUCT_RELEASE_NAME := kanas
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
-$(call inherit-product, $(LOCAL_PATH)/device_kanas.mk)
+$(call inherit-product, $(LOCAL_PATH)/kanas.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := kanas
