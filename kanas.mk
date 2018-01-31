@@ -230,3 +230,10 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
 # WiFi BCMDHD
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)	
+
+# Set those variables here to overwrite the inherited values.
+PRODUCT_NAME := full_kanas
+PRODUCT_DEVICE := kanas
+PRODUCT_BRAND := samsung
+PRODUCT_MANUFACTURER := samsung
+PRODUCT_MODEL := SM-G355H
